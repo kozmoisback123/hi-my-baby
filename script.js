@@ -21,9 +21,6 @@ const datePicker = document.getElementById("date-picker");
 const movieList = document.getElementById("movie-list");
 const sendBtn = document.getElementById("send-btn");
 
-// EmailJS Configuration
-emailjs.init("YOUR_USER_ID"); // Replace YOUR_USER_ID with your EmailJS User ID
-
 // No Button Behavior
 noBtn.addEventListener("click", () => {
   alert("Are you sure? 😢 I promise to make it unforgettable!");
@@ -52,7 +49,7 @@ function populateMovies() {
   });
 }
 
-// Send Email
+// Send Email (Simulated for Now)
 sendBtn.addEventListener("click", () => {
   const dateTime = document.getElementById("date-time").value;
   const selectedMovie = document.querySelector('input[name="movie"]:checked');
@@ -62,19 +59,14 @@ sendBtn.addEventListener("click", () => {
     return;
   }
 
-  // Prepare email data
-  const emailParams = {
-    date_time: dateTime,
-    movie_title: selectedMovie.value,
-  };
+  // Simulated email content
+  const emailContent = `
+    Hey Baby ko! ❤️
+    Our date is set for ${dateTime}.
+    We'll be watching "${selectedMovie.value}".
+    I can't wait to celebrate this special moment. 🥰
+  `;
 
-  // Send email using EmailJS
-  emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", emailParams)
-    .then(() => {
-      alert("Your date is set! 💌 Check your email for details.");
-    })
-    .catch((error) => {
-      console.error("EmailJS Error:", error);
-      alert("Oops! Something went wrong. Please try again.");
-    });
+  alert(`Email Sent! \n\n${emailContent}`);
+  console.log(emailContent);
 });
